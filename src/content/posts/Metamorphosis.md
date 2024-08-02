@@ -1,10 +1,10 @@
 ---
 title: "Lessons from Kafka's Metamorphosis: The Fragility of Relationships and Unconditional Loyalty"
 published: 2024-08-02
-description: ''
+description: 'My thoughts on Metamorphosis by Kafka'
 image: ''
-tags: ["Book Reviews"]
-category: ''
+tags: ["Book Reviews", "Kafka"]
+category: 'Book Reviews'
 draft: false 
 ---
 
