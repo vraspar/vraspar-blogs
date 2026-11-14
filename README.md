@@ -1,6 +1,8 @@
 # vraspar-blogs
 
-Source for [vrajang.com](https://www.vrajang.com) and [vraspar.com](https://www.vraspar.com).
+Source for [vraspar.com](https://www.vraspar.com) (vrajang.com points at the same site).
+
+Old posts are kept as drafts (`draft: true`): they show up in `pnpm dev` but not on the live site.
 
 Built with [Astro](https://astro.build) on the [Firefly](https://github.com/CuteLeaf/Firefly) theme (imported from `CuteLeaf/Firefly@994c0b8`). The previous Fuwari version of the site is tagged `fuwari-2024`.
 

@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "",
 
 	// 站点 URL
-	site_url: "https://www.vrajang.com",
+	site_url: "https://www.vraspar.com",
 
 	// 站点描述
 	description: "Vraspar Blogs - Just another SWE Blog",
