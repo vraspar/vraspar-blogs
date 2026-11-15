@@ -47,11 +47,26 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	// lrc: "[00:00.00]歌词内容...",
 	local: {
 		playlist: [
+			// Kevin MacLeod (incompetech.com), CC BY 4.0; credited in src/content/spec/about.md
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
+				name: "Bossa Antigua",
+				artist: "Kevin MacLeod",
+				url: "/assets/music/bossa-antigua.mp3",
+				cover: "/assets/music/cover/desk.webp",
+				lrc: "",
+			},
+			{
+				name: "Local Forecast - Elevator",
+				artist: "Kevin MacLeod",
+				url: "/assets/music/local-forecast-elevator.mp3",
+				cover: "/assets/music/cover/desk.webp",
+				lrc: "",
+			},
+			{
+				name: "Jazz Brunch",
+				artist: "Kevin MacLeod",
+				url: "/assets/music/jazz-brunch.mp3",
+				cover: "/assets/music/cover/desk.webp",
 				lrc: "",
 			},
 		],
