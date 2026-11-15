@@ -137,6 +137,7 @@ const canonicalUrl = getCanonicalUrl(Astro.url);
 let ogImageUrl: string | undefined;
 let ogImageWidth: number | undefined;
 let ogImageHeight: number | undefined;
+let ogImageDefaultAlt: string | undefined;
 const isGeneratedOg = siteConfig.post.generateOgImages && postSlug;
 if (isGeneratedOg) {
 	ogImageUrl = new URL(`/og/${postSlug}.png`, Astro.site).toString();
@@ -146,12 +147,16 @@ if (isGeneratedOg) {
 	ogImageUrl = postCoverImage; // 已由文章页算成绝对 URL
 	ogImageWidth = propsOgImageWidth;
 	ogImageHeight = propsOgImageHeight;
-} else if (siteLogo?.url) {
-	ogImageUrl = siteLogo.url;
-	ogImageWidth = siteLogo.width;
-	ogImageHeight = siteLogo.height;
+} else {
+	// vraspar: animated share card for every non-post page (static fallback at
+	// /og/vraspar-share.jpg). Rename the file when it changes; sites cache by URL.
+	ogImageUrl = new URL("/og/vraspar-share.gif", Astro.site).toString();
+	ogImageWidth = 960;
+	ogImageHeight = 504;
+	ogImageDefaultAlt =
+		"vraspar: an anime boy at a desk with coffee, laughing while his black cat bats at the steam";
 }
-const ogImageAlt = propsOgImageAlt ?? pageTitle;
+const ogImageAlt = propsOgImageAlt ?? ogImageDefaultAlt ?? pageTitle;
 
 // 使用固定的banner偏移量，position配置用于图片定位
 ---

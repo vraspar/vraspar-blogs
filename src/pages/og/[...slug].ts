@@ -239,7 +239,12 @@ export async function GET({
 		day: "numeric",
 	});
 
-	const description = post.data.description;
+	// The only OG font is Noto Sans SC, which draws curly quotes as full-width CJK
+	// punctuation ("I’ ve"); use straight quotes on the card instead.
+	const straightQuotes = (s: string) =>
+		s.replace(/[‘’]/g, "'").replace(/[“”]/g, '"');
+	const title = straightQuotes(post.data.title);
+	const description = straightQuotes(post.data.description ?? "");
 
 	return new ImageResponse(
 		{
@@ -344,7 +349,7 @@ export async function GET({
 														display: "flex",
 														flexDirection: "column",
 													},
-													children: post.data.title,
+													children: title,
 												},
 											},
 										],
