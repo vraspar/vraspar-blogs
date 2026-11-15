@@ -23,7 +23,7 @@ Biome is the formatter and linter. It uses tabs for indentation and double quote
 
 ## Testing Guidelines
 
-There is no dedicated unit-test framework configured. Before submitting changes, run `pnpm check`, `pnpm type-check`, and `pnpm build` for rendering, content, or generated asset work. For visual or interactive changes, verify with `pnpm dev` or `pnpm preview` and include screenshots in the PR. Name future tests near the feature they cover, using the local file name as the stem.
+Unit tests use Node's built-in test runner through `tsx` (`pnpm test`, files named `*.test.ts` under `src/`). Before submitting changes, run `pnpm check`, `pnpm type-check`, and `pnpm build` for rendering, content, or generated asset work. For visual or interactive changes, verify with `pnpm dev` or `pnpm preview` and include screenshots in the PR. Name future tests near the feature they cover, using the local file name as the stem.
 
 ## Commit & Pull Request Guidelines
 
