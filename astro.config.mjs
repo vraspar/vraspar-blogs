@@ -53,6 +53,7 @@ import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkPlantuml } from "./src/plugins/remark-plantuml.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { remarkWikiLink } from "./src/plugins/remark-wiki-link.js";
+import { doodleDevApi } from "./src/utils/doodles/dev-api";
 import { collectUsedFontCssVars } from "./src/utils/fontHelper";
 
 if (process.env.NODE_ENV === "development") {
@@ -278,6 +279,10 @@ export default defineConfig({
 				if (pathname === "/sponsor/" && !siteConfig.pages.sponsor) {
 					return false;
 				}
+				// Doodle wall moderation page: never in the sitemap
+				if (pathname.startsWith("/admin/")) {
+					return false;
+				}
 				return true;
 			},
 		}),
@@ -351,7 +356,8 @@ export default defineConfig({
 		}),
 	},
 	vite: {
-		plugins: [tailwindcss()],
+		// doodleDevApi: serves /api/doodles under `astro dev` only (see docs/doodle-wall.md)
+		plugins: [tailwindcss(), doodleDevApi()],
 		server: {
 			watch: {
 				ignored: ["**/package/**", "**/Firefly-docs/**"],

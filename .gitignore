@@ -7,6 +7,9 @@ public/vndb-covers/
 # generated types
 .astro/
 
+# local doodle wall store (astro dev)
+.doodles-dev/
+
 # dependencies
 node_modules/
 

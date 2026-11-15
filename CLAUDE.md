@@ -14,7 +14,8 @@ Firefly is a feature-rich static blog theme built on **Astro 7** with **Svelte 5
 | `pnpm build` | Production build (LQIPs → VNDB covers → Astro build → pio asset pruning → font subsetting → Pagefind indexing) |
 | `pnpm preview` | Preview production build |
 | `pnpm check` | `astro check` for type/error checking |
-| `pnpm type-check` | `tsc --noEmit --isolatedDeclarations` (covers `src/` and `scripts/`) |
+| `pnpm type-check` | `tsc --noEmit --isolatedDeclarations` (covers `src/`, `scripts/` and `api/`) |
+| `pnpm test` | Unit tests (`src/**/*.test.ts`, Node's test runner via `tsx`) |
 | `pnpm lint` | Biome lint + auto-fix |
 | `pnpm format` | Biome format |
 | `pnpm new-post <filename>` | Scaffold a new blog post |
@@ -51,6 +52,14 @@ Scroll-linked work in `src/utils/` is rAF-throttled and must stay cheap on mobil
 - `fullscreen-wallpaper-utils.ts` — fullscreen-mode title fade + blur ramp. The blur value `--fullscreen-blur` is **quantized to 2px steps** (skips writes when unchanged) and the max blur (`--overlay-blur`) is **cached** (read once; refreshed by a MutationObserver on `#wallpaper-wrapper` style). Avoid per-frame `getComputedStyle` or continuous full-screen `filter: blur()` writes — each change re-rasterizes the whole viewport on mobile.
 - `grid-layout-utils.ts` — `updateSidebarStickySpacing()` is the per-scroll path and **must not read layout** (`offsetHeight` etc.). The sidebar top-container visibility (`hasVisibleTop`) is cached by `refreshSidebarStickyState()`, which runs on init/navigation only.
 - Fullscreen blur ramp can be disabled per device via `backgroundWallpaper.fullscreen.blurRamp.enable.{desktop,mobile}` — when off, fullscreen mode has no blur on that device (home + other pages) and the settings-panel blur slider is hidden. Documented in `Firefly-Docs/` (zh/en).
+
+### Doodle wall (guestbook)
+
+Visitors draw on `/guestbook/`; the owner approves on `/admin/doodles/`. Full guide: `docs/doodle-wall.md`.
+
+- The site stays static. The only server code is `api/doodles.ts`, a Vercel Function that Vercel's zero-config build compiles next to the Astro output. Logic lives in `src/utils/doodles/` (handler, validation, private Vercel Blob storage) and UI in `src/components/pages/doodles/`.
+- The function runs as native ESM: relative imports in `api/` and `src/utils/doodles/` **must keep the `.js` extension**, and path aliases don't work there. Extensionless imports build but crash at runtime.
+- `astro dev` serves `/api/doodles` through a dev-only Vite middleware (`src/utils/doodles/dev-api.ts`) backed by a filesystem store in `.doodles-dev/`; dev admin token `dev-doodle-admin-token-change-me`. `pnpm preview` has no API.
 
 ### Content Collections
 

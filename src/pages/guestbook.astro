@@ -2,6 +2,8 @@
 import { getEntry, render } from "astro:content";
 import Comment from "@components/comment/index.astro";
 import Markdown from "@components/common/Markdown.astro";
+import DoodleWall from "@components/pages/doodles/DoodleWall.svelte";
+import "@/components/pages/doodles/doodles.css";
 import { Icon } from "astro-icon/components";
 import { commentConfig, siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
@@ -53,6 +55,23 @@ const description = i18n(I18nKey.guestbookDescription);
       </Markdown>
     </div>
   </div>
+
+  <!-- Doodle wall: visitors draw, the owner approves (docs/doodle-wall.md) -->
+  <section class="card-base mt-4 px-5 sm:px-9 py-6 relative w-full" aria-labelledby="doodle-wall-title">
+    <div class="page-heading mb-6">
+      <div class="page-icon" aria-hidden="true">
+        <Icon name="material-symbols:draw" />
+      </div>
+      <div>
+        <h2 id="doodle-wall-title">Doodle wall</h2>
+        <p>Draw something small and pin it up. I look at every doodle before it goes on the wall.</p>
+      </div>
+    </div>
+    <DoodleWall client:visible={{ rootMargin: "200px" }} />
+    <noscript>
+      <p class="text-(--content-meta)">The doodle wall needs JavaScript.</p>
+    </noscript>
+  </section>
 
   <!-- 评论区 -->
   <div class="mt-4">
