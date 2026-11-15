@@ -1,55 +1,21 @@
-# 🍥Fuwari
+# vraspar-blogs
 
-A static blog template built with [Astro](https://astro.build).
+Source for [vraspar.com](https://www.vraspar.com) (vrajang.com points at the same site).
 
-[**🖥️Live Demo (Vercel)**](https://fuwari.vercel.app)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;[**🌏中文 README**](https://github.com/saicaca/fuwari/blob/main/README.zh-CN.md)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;[**📦Old Hexo Version**](https://github.com/saicaca/hexo-theme-vivia)
+Old posts are kept as drafts (`draft: true`): they show up in `pnpm dev` but not on the live site.
 
-![Preview Image](https://raw.githubusercontent.com/saicaca/resource/main/fuwari/home.png)
+Built with [Astro](https://astro.build) on the [Firefly](https://github.com/CuteLeaf/Firefly) theme (imported from `CuteLeaf/Firefly@994c0b8`). The previous Fuwari version of the site is tagged `fuwari-2024`.
 
-## ✨ Features
+## Common tasks
 
-- [x] Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com)
-- [x] Smooth animations and page transitions
-- [x] Light / dark mode
-- [x] Customizable theme colors & banner
-- [x] Responsive design
-- [ ] Comments
-- [x] Search
-- [ ] TOC
+| Command | What it does |
+|---|---|
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Local dev server at `localhost:4321` |
+| `pnpm build` | Production build into `./dist/` |
+| `pnpm new-post <filename>` | Start a new post in `src/content/posts/` |
 
-## 🚀 How to Use
+Site settings live in `src/config/` (`siteConfig.ts`, `profileConfig.ts`, `musicConfig.ts`, `galleryConfig.ts`, ...).
 
-1. [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template or fork this repository.
-2. To edit your blog locally, clone your repository, run `pnpm install` AND `pnpm add sharp` to install dependencies.  
-   - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
-3. Edit the config file `src/config.ts` to customize your blog.
-4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment. 
-
-## ⚙️ Frontmatter of Posts
-
-```yaml
----
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
-image: /images/cover.jpg
-tags: [Foo, Bar]
-category: Front-end
-draft: false
----
-```
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                             | Action                                           |
-|:------------------------------------|:-------------------------------------------------|
-| `pnpm install` AND `pnpm add sharp` | Installs dependencies                            |
-| `pnpm dev`                          | Starts local dev server at `localhost:4321`      |
-| `pnpm build`                        | Build your production site to `./dist/`          |
-| `pnpm preview`                      | Preview your build locally, before deploying     |
-| `pnpm new-post <filename>`          | Create a new post                                |
-| `pnpm astro ...`                    | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro --help`                 | Get help using the Astro CLI                     |
+- **Music:** put MP3s in `public/assets/music/` and list them in `src/config/musicConfig.ts`.
+- **Photos:** add an album to `src/config/galleryConfig.ts` and drop its photos in `public/gallery/<album-id>/`.

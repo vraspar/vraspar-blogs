@@ -5,7 +5,7 @@ description: 'My thoughts on Metamorphosis by Kafka'
 image: ''
 tags: ["Book Reviews", "Kafka"]
 category: 'Book Reviews'
-draft: false 
+draft: true
 ---
 
 When I read Metamorphosis, it made me think about the complexity and fragility of relationships and how our closest and most valued connections change when life takes an unfortunate turn. The tragic transformation of Gregor Samsa into a bug and his family's reaction to this transformation led me to examine the conditional nature of our relationships and the expectations we have of one another. One thing that stood out to me was the idea that "everyone will betray you." The story made me wonder if the people who are supposed to be close to us will stick around when things get tough. Would they forget all the sacrifices we've made if we become dull or ugly, like Gregor did when he turned into a bug?

@@ -1,0 +1,31 @@
+/*
+ * vraspar's own look on top of Firefly.
+ * Everything custom lives in this one file so upstream Firefly updates merge cleanly.
+ * Colours follow --hue, so the visitor colour picker still recolours all of it.
+ */
+
+/* ---------- Navbar icon logo ---------- */
+/* Navbar.astro gives the icon logo `mb-1`, which suits image logos but lifts an
+   icon about 2px above the title text. With it removed the icon box is centred
+   on the title, but the mug glyph (fa7-solid:mug-hot) puts its cup in the lower
+   half of the box, ~5px below the text baseline; lift it 3px so the cup centres
+   on the lowercase letters. Revisit this offset if the logo icon changes. */
+#navbar svg.navbar-logo {
+	margin-bottom: 0;
+	transform: translateY(-3px);
+}
+
+/* ---------- Home banner title: sticker style ---------- */
+/* !important because banner-home.css sets its own shadow with !important per breakpoint */
+html[data-wallpaper-mode] .banner-title {
+	letter-spacing: -0.01em;
+	text-shadow:
+		3px 3px 0 oklch(0.68 0.16 calc(var(--hue) - 15)),
+		6px 6px 0 oklch(0.25 0.04 var(--hue) / 0.45) !important;
+}
+
+/* ---------- Selection picks up the warm accent ---------- */
+::selection {
+	background: oklch(0.85 0.1 var(--hue));
+	color: oklch(0.25 0.04 var(--hue));
+}

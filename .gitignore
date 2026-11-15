@@ -1,8 +1,14 @@
 # build output
 dist/
 
+# generated vndb covers
+public/vndb-covers/
+
 # generated types
 .astro/
+
+# local doodle wall store (astro dev)
+.doodles-dev/
 
 # dependencies
 node_modules/
@@ -21,3 +27,27 @@ pnpm-debug.log*
 .DS_Store
 
 .vercel
+
+package-lock.json
+bun.lockb
+yarn.lock
+
+# ide
+.idea
+*.iml
+
+# docs
+Firefly-docs/
+
+# lite 版本
+Firefly-Lite/
+
+cache/
+package/
+.obsidian/
+
+# vibe coding
+.codex*
+.claude
+.mimocode
+.env*

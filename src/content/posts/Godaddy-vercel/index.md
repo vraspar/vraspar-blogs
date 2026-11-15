@@ -5,7 +5,7 @@ description: A step-by-step guide on how to add a Godaddy domain to your Vercel 
 image: ''
 tags: [Vercel, Godaddy, Tutorial]
 category: 'Tech Tutorial'
-draft: false 
+draft: true
 ---
 
 [Vercel](https://vercel.com) is really a great platform for deploying static sites and deplyoing your app is really straightforward. But when it comes to adding a custom domain to your Vercel app, it can be a bit tricky. In this post, I'll show you how to add a Godaddy domain to your Vercel app. 
