@@ -16,10 +16,12 @@ function reason(bytes: Uint8Array, exp = expected): string {
 
 describe("inspectPng", () => {
 	it("accepts a canvas-like RGBA PNG of the right size", () => {
-		assert.deepEqual(inspectPng(makePng({ width: W, height: H }), expected), {
+		const png = makePng({ width: W, height: H });
+		assert.deepEqual(inspectPng(png, expected), {
 			ok: true,
 			width: W,
 			height: H,
+			png,
 		});
 	});
 
@@ -84,13 +86,46 @@ describe("inspectPng", () => {
 		assert.match(reason(png), /after PNG end/);
 	});
 
-	it("rejects text and unknown chunks", () => {
+	it("drops text and private ancillary chunks some browsers add", () => {
+		const plain = makePng({ width: W, height: H });
 		const png = makePng({
 			width: W,
 			height: H,
-			extraChunks: [{ type: "tEXt", data: Buffer.from("Comment\0hello") }],
+			extraChunks: [
+				{ type: "tEXt", data: Buffer.from("Comment\0hello") },
+				{ type: "deBG", data: Buffer.from("browser debug data") },
+			],
 		});
-		assert.match(reason(png), /unsupported PNG chunk tEXt/);
+		const result = inspectPng(png, expected);
+		assert.equal(result.ok, true);
+		if (!result.ok) return;
+		assert.ok(result.png.length < png.length);
+		assert.deepEqual(Buffer.from(result.png), Buffer.from(plain));
+		assert.equal(inspectPng(result.png, expected).ok, true);
+	});
+
+	it("returns the original bytes when nothing is dropped", () => {
+		const png = makePng({ width: W, height: H });
+		const result = inspectPng(png, expected);
+		assert.equal(result.ok && result.png, png);
+	});
+
+	it("rejects unknown critical chunks", () => {
+		const png = makePng({
+			width: W,
+			height: H,
+			extraChunks: [{ type: "QQQQ", data: Buffer.from("?") }],
+		});
+		assert.match(reason(png), /unsupported PNG chunk QQQQ/);
+	});
+
+	it("rejects chunk types that aren't letters", () => {
+		const png = makePng({
+			width: W,
+			height: H,
+			extraChunks: [{ type: "a1b2", data: Buffer.from("?") }],
+		});
+		assert.equal(reason(png), "corrupt PNG");
 	});
 
 	it("rejects interlaced images", () => {

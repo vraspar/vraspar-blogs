@@ -122,5 +122,5 @@ export function parseSubmission(body: unknown): SubmissionResult {
 		};
 	}
 
-	return { kind: "ok", value: { png, name, note } };
+	return { kind: "ok", value: { png: check.png, name, note } };
 }

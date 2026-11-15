@@ -1,10 +1,10 @@
 /*
  * Strict PNG check for doodle uploads, using only Node built-ins.
  *
- * Accepts exactly what a browser canvas exports: a non-interlaced PNG of one
- * of the expected sizes, every chunk CRC-valid, nothing after IEND, no text or
- * other unexpected chunks, and image data that inflates to exactly the size
- * the header promises (which also caps decompression work).
+ * Accepts what a browser canvas exports: a non-interlaced PNG of one of the
+ * expected sizes, every chunk CRC-valid, nothing after IEND, and image data
+ * that inflates to exactly the size the header promises (which also caps
+ * decompression work). Returns a cleaned copy of the file to store.
  */
 import { crc32, inflateSync } from "node:zlib";
 
@@ -14,14 +14,17 @@ export interface PngExpectation {
 }
 
 export type PngCheck =
-	| { ok: true; width: number; height: number }
+	/** `png` is the file with every non-kept ancillary chunk removed. */
+	| { ok: true; width: number; height: number; png: Uint8Array }
 	| { ok: false; reason: string };
 
 const SIGNATURE = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
 
-// Critical chunks plus the colour/metadata chunks browsers may emit. Text,
-// EXIF and private chunks are refused so uploads can't smuggle payloads.
-const ALLOWED_CHUNKS = new Set([
+// Critical chunks plus the colour/metadata chunks browsers may emit. Any other
+// ancillary chunk (text, EXIF, or a private one some browsers add, such as
+// deBG) is dropped so stored images can't carry payloads; an unknown critical
+// chunk means we can't read the image, so it is refused.
+const KEPT_CHUNKS = new Set([
 	"IHDR",
 	"PLTE",
 	"IDAT",
@@ -70,6 +73,8 @@ export function inspectPng(
 	let sawIend = false;
 	let idatState: "none" | "open" | "closed" = "none";
 	const idat: Uint8Array[] = [];
+	const kept: Uint8Array[] = [bytes.subarray(0, SIGNATURE.length)];
+	let dropped = false;
 
 	while (offset < bytes.length) {
 		if (offset + 12 > bytes.length) return fail("truncated PNG");
@@ -80,13 +85,23 @@ export function inspectPng(
 			return fail("truncated PNG");
 		}
 		const type = String.fromCharCode(...bytes.subarray(offset + 4, dataStart));
+		if (!/^[A-Za-z]{4}$/.test(type)) return fail("corrupt PNG");
 		const storedCrc = view.getUint32(dataEnd);
 		if (crc32(bytes.subarray(offset + 4, dataEnd)) !== storedCrc) {
 			return fail("corrupt PNG");
 		}
 		const isFirst = offset === SIGNATURE.length;
 		if (isFirst !== (type === "IHDR")) return fail("IHDR must come first");
-		if (!ALLOWED_CHUNKS.has(type)) return fail(`unsupported PNG chunk ${type}`);
+		if (!KEPT_CHUNKS.has(type)) {
+			// Lowercase first letter = ancillary: safe to drop by the PNG spec.
+			const ancillary = type[0] >= "a";
+			if (!ancillary) return fail(`unsupported PNG chunk ${type}`);
+			dropped = true;
+			if (idatState === "open") idatState = "closed";
+			offset = dataEnd + 4;
+			continue;
+		}
+		kept.push(bytes.subarray(offset, dataEnd + 4));
 
 		if (type === "IHDR") {
 			if (length !== 13) return fail("bad PNG header");
@@ -142,5 +157,6 @@ export function inspectPng(
 		if (raw[row * (stride + 1)] > 4) return fail("corrupt PNG image data");
 	}
 
-	return { ok: true, width, height };
+	const png = dropped ? new Uint8Array(Buffer.concat(kept)) : bytes;
+	return { ok: true, width, height, png };
 }
