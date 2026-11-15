@@ -1,0 +1,26 @@
+---
+// Doodle wall moderation. Not linked anywhere, kept out of the sitemap
+// (astro.config.mjs), marked noindex here and via X-Robots-Tag (vercel.json).
+// Being static, the page itself holds nothing secret: every action is
+// authorised by the doodle Function with DOODLE_ADMIN_TOKEN.
+import { Icon } from "astro-icon/components";
+import DoodleAdmin from "@/components/pages/doodles/DoodleAdmin.svelte";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import "@/styles/pages/common.css";
+---
+
+<MainGridLayout title="Doodle moderation" description="Doodle wall moderation">
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <section class="card-base px-5 sm:px-9 py-6 relative w-full">
+    <div class="page-heading mb-6">
+      <div class="page-icon" aria-hidden="true">
+        <Icon name="material-symbols:draw" />
+      </div>
+      <div>
+        <h2>Doodle moderation</h2>
+        <p>Approve doodles for the guestbook wall, or delete them.</p>
+      </div>
+    </div>
+    <DoodleAdmin client:load />
+  </section>
+</MainGridLayout>
