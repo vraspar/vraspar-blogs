@@ -90,7 +90,7 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 	model: [
 		{
 			// Live2D模型本地文件路径
-			path: "/pio/models/live2d/snow_miku/model.json",
+			path: "/pio/models/live2d/tororo/model.json",
 			// 动作声音音量 范围0~1，默认 0（静音）
 			volume: 0,
 			// 模型缩放比例
@@ -98,14 +98,6 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 			// X轴偏移，范围 -2~2，正值向右
 			x: 0,
 			// Y轴偏移，范围 -2~2，正值向上
-			y: 0,
-		},
-		{
-			// 外部直连模型
-			path: "https://model.hacxy.cn/cat-black/model.json",
-			volume: 0,
-			scale: 1,
-			x: 0,
 			y: 0,
 		},
 	],
@@ -139,11 +131,6 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 				action: "sleep",
 			},
 			{
-				icon: "mdi:swap-horizontal",
-				label: "Switch buddy",
-				action: "switchModel",
-			},
-			{
 				icon: "mdi:github",
 				label: "GitHub",
 				action: "github",
@@ -161,7 +148,7 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 		// 循环提示内容
 		messages: [
 			"Psst. The palette button up top changes the colors.",
-			"The buttons next to me can swap me for a cat.",
+			"Mrrp.",
 			"Have you checked the gallery yet?",
 			"Remember to drink some water!",
 		],
