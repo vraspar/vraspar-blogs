@@ -4,25 +4,6 @@
  * Colours follow --hue, so the visitor colour picker still recolours all of it.
  */
 
-/* ---------- Navbar ---------- */
-
-/* Text-only wordmark: hide the logo slot (Firefly always renders one) */
-#navbar .navbar-logo {
-	display: none;
-}
-
-#navbar a[href="/"] > div {
-	font-size: 1.35rem;
-	letter-spacing: -0.01em;
-}
-
-/* Light mode: dark text needs a solid surface behind it, even over a wallpaper.
-   Firefly makes the bar 45% opaque (or fully transparent in fullscreen mode),
-   which is unreadable on a busy image. #navbar-wrapper outranks its selectors. */
-html:not(.dark) #navbar-wrapper #navbar > div {
-	background: color-mix(in oklch, var(--card-bg) 88%, transparent) !important;
-}
-
 /* ---------- Home banner title: sticker style ---------- */
 /* !important because banner-home.css sets its own shadow with !important per breakpoint */
 html[data-wallpaper-mode] .banner-title {

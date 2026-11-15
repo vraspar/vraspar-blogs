@@ -101,10 +101,9 @@ export const siteConfig: SiteConfig = {
 		// image 和 url 类型可额外设置 valueDark，用于暗色模式下显示另一张图片，不设置则亮暗色共用 value
 		// 例如: { type: "image", value: "assets/images/logo.png", valueDark: "assets/images/logo-dark.png", alt: "Logo" }
 		// 使用 Astro 图标库时不需要设置 valueDark，图标会自动跟随主题亮暗色切换
-		// Hidden by src/styles/vraspar.css: the navbar shows a text-only wordmark
 		logo: {
 			type: "icon",
-			value: "material-symbols:home",
+			value: "mingcute:cat-fill",
 		},
 		// 导航栏标题
 		title: "vraspar",
@@ -113,7 +112,7 @@ export const siteConfig: SiteConfig = {
 		// 导航菜单对齐方式，left：左对齐，center：居中
 		menuAlign: "center",
 		// 导航栏图标和标题是否跟随主题色
-		followTheme: true,
+		followTheme: false,
 		// 导航栏模式navbarMode：
 		// "static"：不固定，随页面滚动消失
 		// "fixed"：固定在顶部常显

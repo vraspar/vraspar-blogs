@@ -98,7 +98,7 @@ export const fontConfig: FontSelectionConfig = {
 	// 主页横幅副标题字体
 	bannerSubtitleFont: "--font-inter",
 	// 导航栏标题字体
-	navbarTitleFont: "--font-zen-maru-gothic",
+	navbarTitleFont: "",
 	// 代码块字体（用于代码高亮和等宽字体场景）
 	codeFont: "--font-jetbrains-mono",
 
