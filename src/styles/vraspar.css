@@ -6,9 +6,13 @@
 
 /* ---------- Navbar icon logo ---------- */
 /* Navbar.astro gives the icon logo `mb-1`, which suits image logos but lifts an
-   icon about 2px above the title text. */
+   icon about 2px above the title text. With it removed the icon box is centred
+   on the title, but the mug glyph (fa7-solid:mug-hot) puts its cup in the lower
+   half of the box, ~5px below the text baseline; lift it 3px so the cup centres
+   on the lowercase letters. Revisit this offset if the logo icon changes. */
 #navbar svg.navbar-logo {
 	margin-bottom: 0;
+	transform: translateY(-3px);
 }
 
 /* ---------- Home banner title: sticker style ---------- */
