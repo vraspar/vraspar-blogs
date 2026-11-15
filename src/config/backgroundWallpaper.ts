@@ -63,7 +63,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 主页横幅主标题字体大小
 			titleSize: "4.5rem",
 			// 主页横幅副标题
-			subtitle: ["Just your normal SWE", "Building Tenjin", "Toronto, ON"],
+			subtitle: [
+				"Just your normal SWE with mild AI psychosis",
+				"Building Tenjin",
+				"Toronto, ON",
+			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
 			typewriter: {
