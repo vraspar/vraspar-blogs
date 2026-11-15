@@ -42,7 +42,7 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Vraspar Blogs",
+	title: "vraspar",
 
 	// 站点副标题
 	subtitle: "",
@@ -51,7 +51,7 @@ export const siteConfig: SiteConfig = {
 	site_url: "https://www.vraspar.com",
 
 	// 站点描述
-	description: "Vraspar Blogs - Just another SWE Blog",
+	description: "Just your normal SWE with mild AI psychosis",
 
 	// 站点关键词
 	keywords: ["vraspar", "Vrajang", "blog"],
