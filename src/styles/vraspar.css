@@ -4,6 +4,13 @@
  * Colours follow --hue, so the visitor colour picker still recolours all of it.
  */
 
+/* ---------- Navbar icon logo ---------- */
+/* Navbar.astro gives the icon logo `mb-1`, which suits image logos but lifts an
+   icon about 2px above the title text. */
+#navbar svg.navbar-logo {
+	margin-bottom: 0;
+}
+
 /* ---------- Home banner title: sticker style ---------- */
 /* !important because banner-home.css sets its own shadow with !important per breakpoint */
 html[data-wallpaper-mode] .banner-title {
