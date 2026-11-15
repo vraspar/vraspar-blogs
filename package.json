@@ -3,14 +3,14 @@
   "type": "module",
   "version": "6.16.9",
   "engines": {
-    "node": ">=22.23.0"
+    "node": "24.x"
   },
   "packageManager": "pnpm@11.22.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "build": "npx tsx scripts/generate-github-card-data.ts && npx tsx scripts/generate-lqips.ts && npx tsx scripts/generate-vndb-covers.ts && astro build --force && npx tsx scripts/prune-pio-assets.ts && npx tsx scripts/subset-fonts.ts && npx tsx scripts/minify-inline-scripts.ts && npx tsx scripts/run-pagefind.ts",
+    "build": "tsx scripts/generate-github-card-data.ts && tsx scripts/generate-lqips.ts && tsx scripts/generate-vndb-covers.ts && astro build --force && tsx scripts/prune-pio-assets.ts && tsx scripts/subset-fonts.ts && tsx scripts/minify-inline-scripts.ts && tsx scripts/run-pagefind.ts",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
@@ -20,8 +20,8 @@
     "format": "biome format --write ./src ./scripts",
     "lint": "biome check --write ./src ./scripts",
     "preinstall": "npx only-allow pnpm",
-    "lqips": "npx tsx scripts/generate-lqips.ts",
-    "github-cards": "npx tsx scripts/generate-github-card-data.ts"
+    "lqips": "tsx scripts/generate-lqips.ts",
+    "github-cards": "tsx scripts/generate-github-card-data.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

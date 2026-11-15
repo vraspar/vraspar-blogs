@@ -12,8 +12,6 @@ import {
 const getDynamicNavBarConfig = (): NavBarConfig => {
 	const links: NavBarLink[] = [];
 
-	links.push(LinkPresets.Home);
-
 	// Default (Chinese) preset names are translated by src/utils/navbar-i18n.ts
 	links.push({
 		name: "文章",
@@ -30,14 +28,8 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	links.push(LinkPresets.Projects);
 	links.push(LinkPresets.Dynamic);
 	links.push(LinkPresets.Gallery);
+	links.push(LinkPresets.Guestbook);
 	links.push(LinkPresets.About);
-
-	links.push({
-		name: "GitHub",
-		url: "https://github.com/vraspar",
-		external: true,
-		icon: "fa7-brands:github",
-	});
 
 	return { links } as NavBarConfig;
 };

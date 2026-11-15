@@ -13,7 +13,7 @@ const pages = resolvePageToggles({
 	// 友链页面开关
 	friends: false,
 	// 留言板页面开关，需要配置评论系统
-	guestbook: false,
+	guestbook: true,
 
 	// ── 我的 (My) ──────────────────────────────────
 
@@ -102,11 +102,12 @@ export const siteConfig: SiteConfig = {
 		// 例如: { type: "image", value: "assets/images/logo.png", valueDark: "assets/images/logo-dark.png", alt: "Logo" }
 		// 使用 Astro 图标库时不需要设置 valueDark，图标会自动跟随主题亮暗色切换
 		logo: {
-			type: "icon",
-			value: "material-symbols:pets",
+			type: "image",
+			value: "assets/images/my-avatar.jpg",
+			alt: "vraspar",
 		},
 		// 导航栏标题
-		title: "Vraspar Blogs",
+		title: "vraspar",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中

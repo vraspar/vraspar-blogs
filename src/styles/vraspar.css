@@ -31,7 +31,13 @@
 	opacity: 0.85;
 }
 
-/* The paw logo wiggles when you hover the site title */
+/* The avatar logo is round, and wiggles when you hover the site title */
+#navbar img.navbar-logo {
+	border-radius: 9999px;
+	object-fit: cover;
+	box-shadow: 0 0 0 2px oklch(0.78 0.14 var(--hue) / 0.6);
+}
+
 @keyframes vraspar-wiggle {
 	0%,
 	100% {
