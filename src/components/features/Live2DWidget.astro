@@ -115,9 +115,27 @@ function serializeMenus(menus: Props["config"]["menus"]) {
 		}
 	}
 
+	// l2d-widget hardcodes a few Chinese status labels; show them in English
+	const L2D_TEXT: Record<string, string> = {
+		正在加载: "Loading",
+		切换中: "Switching",
+		正在休息: "Napping",
+		休眠: "Nap",
+	};
+	function translateText(node: Node) {
+		const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+		let t: Node | null = node.nodeType === Node.TEXT_NODE ? node : walker.nextNode();
+		while (t) {
+			const en = L2D_TEXT[t.textContent?.trim() ?? ""];
+			if (en) t.textContent = en;
+			t = walker.nextNode();
+		}
+	}
+
 	const tipObserver = new MutationObserver((mutations) => {
 		for (const m of mutations) {
 			for (const node of m.addedNodes) {
+				translateText(node);
 				if (node instanceof HTMLElement) {
 					if (node.style.whiteSpace === "nowrap") patchTipBubble(node);
 					node.querySelectorAll<HTMLElement>('*').forEach(patchTipBubble);
