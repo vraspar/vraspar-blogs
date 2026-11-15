@@ -50,3 +50,4 @@ package/
 .codex*
 .claude
 .mimocode
+.env*

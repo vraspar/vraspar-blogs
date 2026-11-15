@@ -149,7 +149,7 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 		messages: [
 			"Psst. The palette button up top changes the colors.",
 			"Mrrp.",
-			"Have you checked the gallery yet?",
+			"Draw me something in the guestbook!",
 			"Remember to drink some water!",
 		],
 		// 文字显示时间（ms）
