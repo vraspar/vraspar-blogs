@@ -21,10 +21,30 @@ export const profileConfig: ProfileConfig = {
 	// `pnpm add @iconify-json/<icon-set-name>`
 	// showName: true 时显示图标和名称，false 时只显示图标
 	links: [
-		{ name: "X", icon: "fa7-brands:x-twitter", url: "https://x.com/vraspar", showName: false },
-		{ name: "Steam", icon: "fa7-brands:steam", url: "https://steamcommunity.com/id/vraspar", showName: false },
-		{ name: "GitHub", icon: "fa7-brands:github", url: "https://github.com/vraspar", showName: false },
-		{ name: "Goodreads", icon: "fa7-brands:goodreads-g", url: "https://www.goodreads.com/user/show/157449422-vrajanv", showName: false },
+		{
+			name: "X",
+			icon: "fa7-brands:x-twitter",
+			url: "https://x.com/vraspar",
+			showName: false,
+		},
+		{
+			name: "Steam",
+			icon: "fa7-brands:steam",
+			url: "https://steamcommunity.com/id/vraspar",
+			showName: false,
+		},
+		{
+			name: "GitHub",
+			icon: "fa7-brands:github",
+			url: "https://github.com/vraspar",
+			showName: false,
+		},
+		{
+			name: "Goodreads",
+			icon: "fa7-brands:goodreads-g",
+			url: "https://www.goodreads.com/user/show/157449422-vrajanv",
+			showName: false,
+		},
 		{ name: "RSS", icon: "fa7-solid:rss", url: "/rss/", showName: false },
 	],
 };

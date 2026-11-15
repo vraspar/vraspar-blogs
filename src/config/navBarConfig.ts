@@ -19,9 +19,16 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		name: "文章",
 		url: "#",
 		icon: "material-symbols:article",
-		children: [LinkPresets.Archive, LinkPresets.Categories, LinkPresets.Tags],
+		children: [
+			LinkPresets.Archive,
+			LinkPresets.Categories,
+			LinkPresets.Tags,
+			LinkPresets.Series,
+		],
 	});
 
+	links.push(LinkPresets.Projects);
+	links.push(LinkPresets.Dynamic);
 	links.push(LinkPresets.Gallery);
 	links.push(LinkPresets.About);
 

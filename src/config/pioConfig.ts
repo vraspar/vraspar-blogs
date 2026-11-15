@@ -85,7 +85,7 @@ export const spineModelConfig: SpineModelConfig = {
 // Live2D 看板娘配置 (使用 l2d-widget 库，文档：https://l2d-widget.hacxy.cn)
 export const live2dWidgetConfig: Live2DWidgetConfig = {
 	// Live2D 看板娘开关
-	enable: false,
+	enable: true,
 	// 模型配置，支持单个模型或数组（多模型切换）
 	model: [
 		{
@@ -125,22 +125,22 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 		items: [
 			{
 				icon: "mdi:home",
-				label: "返回主页",
+				label: "Home",
 				action: "home",
 			},
 			{
 				icon: "mdi:arrow-up",
-				label: "返回顶部",
+				label: "Back to top",
 				action: "scrollToTop",
 			},
 			{
 				icon: "mdi:bed",
-				label: "休眠",
+				label: "Nap",
 				action: "sleep",
 			},
 			{
 				icon: "mdi:swap-horizontal",
-				label: "切换模型",
+				label: "Switch buddy",
 				action: "switchModel",
 			},
 			{
@@ -157,13 +157,13 @@ export const live2dWidgetConfig: Live2DWidgetConfig = {
 		// 气泡开关
 		enable: true,
 		// 初始欢迎消息
-		welcomeMessage: ["你好呀！", "欢迎来到我的世界！"],
+		welcomeMessage: ["Oh hi!", "Welcome to my corner of the internet."],
 		// 循环提示内容
 		messages: [
-			"有什么需要帮助的吗？",
-			"今天天气真不错呢！",
-			"要不要一起玩游戏？",
-			"记得按时休息哦！",
+			"Psst. The palette button up top changes the colors.",
+			"The buttons next to me can swap me for a cat.",
+			"Have you checked the gallery yet?",
+			"Remember to drink some water!",
 		],
 		// 文字显示时间（ms）
 		duration: 3000,
