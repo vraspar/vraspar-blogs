@@ -150,10 +150,9 @@ if (isGeneratedOg) {
 } else {
 	// vraspar: animated share card for every non-post page (static fallback at
 	// /og/vraspar-share.jpg). Rename the file when it changes; sites cache by URL.
-	// Kept near 1 MB: some apps drop link previews whose image is too heavy.
-	ogImageUrl = new URL("/og/vraspar-share-v2.gif", Astro.site).toString();
-	ogImageWidth = 640;
-	ogImageHeight = 336;
+	ogImageUrl = new URL("/og/vraspar-share.gif", Astro.site).toString();
+	ogImageWidth = 960;
+	ogImageHeight = 504;
 	ogImageDefaultAlt =
 		"vraspar: an anime boy at a desk with coffee, laughing while his black cat bats at the steam";
 }
